@@ -2,3 +2,4 @@
 *.csv
 *.html
 *.pdf
+/src/__pycache__/*
