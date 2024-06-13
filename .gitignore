@@ -1,5 +1,3 @@
 *.ipynb_checkpoints
 *.csv
-*.html
-*.pdf
 /src/__pycache__/*
