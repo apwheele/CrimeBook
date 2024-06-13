@@ -5,6 +5,7 @@
 
 requests
 pandas
+tabulate
 matplotlib
 notebook==6.4.12
 nbconvert[webpdf]
