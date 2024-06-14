@@ -26,7 +26,7 @@ theme = {'axes.grid': True,
          'axes.labelsize': 12,
          'axes.titlesize': 14,
          'axes.titlelocation': 'left',
-         'figure.dpi': 200}
+         'figure.dpi': 500}
 
 # updating the default
 rcParams.update(theme)
@@ -35,7 +35,11 @@ rcParams.update(theme)
 # Into title slide
 def intro_slide(date,cont=contact):
     intro  =  f'# Cary Monthly Crime Report\n\n'
-    intro += f"Last run at {date.strftime('%Y-%m-%d')}\n"
+    intro += "This is an automated CompStat report that provides up to date metrics for "
+    intro += "\n - the most recent year-to-date metrics"
+    intro += "\n - monthly graphs over the prior three years"
+    intro += "\n - The top 10 aparment complexes with the highest weighted crime harm scores over the past 90 days"
+    intro += f"\n\nLast run at {date.strftime('%Y-%m-%d')}\n"
     intro += f'By [{contact[0]}](mailto:{contact[1]})'
     return intro
 
@@ -52,7 +56,7 @@ def month_graphs(data):
     tr = data['Date'][data['Date'].dt.month.isin([1,7])]
     tr_labs = tr.dt.strftime('%Y-%m')
     for c in cols:
-        fig, ax = plt.subplots(figsize=(4,1.5))
+        fig, ax = plt.subplots(figsize=(4,1.9))
         ax.plot(data['Date'],data[c],'-o',c='k',markeredgecolor='white')
         # set xticks every quarter
         ax.set_xticks(tr,tr_labs,rotation=30,fontsize=10)
@@ -61,7 +65,9 @@ def month_graphs(data):
 
 # Apt Crime Weights Table
 def apt_table(data,range_str,n=10):
-    topk = data.head(n)
+    topk = data.head(n).copy()
+    # escaping the pipe in the markdown for the note
+    topk['Note'] = topk['Note'].str.replace(r"|",r"\|")
     fin_str = f'## Top {n} Apartments by Crime Weights\n\n'
     fin_str += range_str
     tkm = topk.to_markdown(index=False)
