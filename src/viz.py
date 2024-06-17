@@ -10,8 +10,6 @@ import matplotlib.pyplot as plt
 from matplotlib import rcParams
 from datetime import datetime
 
-contact = ('Andrew Wheeler', 'andrew.wheeler@crimede-coder.com')
-
 # My default chart template
 theme = {'axes.grid': True,
          'axes.axisbelow': True,
@@ -31,8 +29,10 @@ theme = {'axes.grid': True,
 # updating the default
 rcParams.update(theme)
 
+# Default contact info
+contact = ('Andrew Wheeler', 'andrew.wheeler@crimede-coder.com')
 
-# Into title slide
+# Intro title slide
 def intro_slide(date,cont=contact):
     intro  =  f'# Cary Monthly Crime Report\n\n'
     intro += "This is an automated CompStat report that provides up to date metrics for "
@@ -58,7 +58,6 @@ def month_graphs(data):
     for c in cols:
         fig, ax = plt.subplots(figsize=(4,1.9))
         ax.plot(data['Date'],data[c],'-o',c='k',markeredgecolor='white')
-        # set xticks every quarter
         ax.set_xticks(tr,tr_labs,rotation=30,fontsize=10)
         ax.set_title(f'{c} counts per month')
         plt.show()
