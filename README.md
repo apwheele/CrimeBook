@@ -1,6 +1,6 @@
 # CrimeBook
 
-This is a code example for the an end-to-end project example for my *Data Science for Crime Analysis with Python* book. It shows creating data manipulation functions, as well as an automated CompStat report that updates with the newest data available.
+This is a code example for the an end-to-end project example for my [*Data Science for Crime Analysis with Python*](https://crimede-coder.com/blogposts/2024/PythonDataScience) book. It shows creating data manipulation functions, as well as an automated CompStat report that updates with the newest data available.
 
 The components are:
 
